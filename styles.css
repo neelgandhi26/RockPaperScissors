@@ -63,3 +63,13 @@ h1.score {
   outline: 3px solid red;
   transform: translateY(-0.625rem);
 }
+
+.move-up {
+  transform: translateY(-0.625rem);
+  outline: 3px solid red;
+}
+
+.move-down {
+  transform: translateY(0rem);
+  outline: none;
+}
