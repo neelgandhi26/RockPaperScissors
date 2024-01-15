@@ -25,7 +25,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0rem 2.5rem 0rem 2.5rem;
-  padding: 1.25rem;
 }
 
 .picker {
@@ -43,9 +42,11 @@ body {
 h1.score {
   font-family: "Poppins", sans-serif;
   font-size: 1.56rem;
+  margin-bottom: 1.25rem;
 }
 
 .user.player {
+  margin-top: 0.625rem;
   margin-bottom: 10rem;
 }
 
@@ -54,4 +55,11 @@ h1.score {
   height: auto;
   margin-right: 0.938rem;
   border-radius: 10px;
+  transition: transform 250ms;
+}
+
+.user img:hover {
+  box-sizing: border-box;
+  outline: 3px solid red;
+  transform: translateY(-0.625rem);
 }
