@@ -1,13 +1,29 @@
+let userPicker = document.getElementById("user-picker");
+
 computerChoiceTransition = (choice) => {
-  document.getElementById(`computer-${choice}`).classList.add("move-up");
-  document.getElementById(`computer-${choice}`).classList.add("move-down");
-  document.getElementById(`computer-${choice}`).classList.remove("move-up");
-  document.getElementById(`computer-${choice}`).classList.remove("move-down");
+  if (
+    document
+      .getElementById(`computer-${choice}`)
+      .classList.value.includes("updown-animation")
+  ) {
+    document
+      .getElementById(`computer-${choice}`)
+      .classList.remove("updown-animation");
+    document
+      .getElementById(`computer-${choice}`)
+      .classList.add("updown-animation");
+  }
+
+  document
+    .getElementById(`computer-${choice}`)
+    .classList.add("updown-animation");
 };
 
 getComputerChoice = () => {
   let choices = ["rock", "paper", "scissors"];
-  return choices[Math.floor(Math.random() * 3)];
+  let computerChoice = choices[Math.floor(Math.random() * 3)];
+  computerChoiceTransition(computerChoice);
+  return computerChoice;
 };
 
 playRound = (playerSelection, computerSelection) => {
@@ -15,10 +31,7 @@ playRound = (playerSelection, computerSelection) => {
   computerSelection = computerSelection.toUpperCase();
 
   if (playerSelection === computerSelection) {
-    playRound(
-      prompt("Pick either Rock, Paper, or Scissors"),
-      getComputerChoice()
-    );
+    return "Tie";
   }
   if (
     (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
@@ -31,29 +44,28 @@ playRound = (playerSelection, computerSelection) => {
   }
 };
 
-game = () => {
-  let playerScore = 0;
-  let ComputerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Pick either Rock, Paper, or Scissors");
-    let computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
+let playerScoreElement = document.querySelector(".user.score");
+let computerScoreElement = document.querySelector(".computer.score");
 
+userPicker.addEventListener("click", (e) => {
+  if (
+    playerScore < 5 &&
+    computerScore < 5 &&
+    e.target.classList.contains("user-choice")
+  ) {
+    let playerSelection = e.target.closest("img").id;
+    let computerSelection = getComputerChoice();
     let roundWinner = playRound(playerSelection, computerSelection);
 
     if (roundWinner == "Player") {
-      console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
       playerScore++;
+      playerScoreElement.innerHTML = `Player Score: ${playerScore}`;
     }
     if (roundWinner == "Computer") {
-      console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-      ComputerScore++;
+      computerScore++;
+      computerScoreElement.innerHTML = `Computer Score: ${computerScore}`;
     }
   }
-  if (playerScore > ComputerScore) {
-    console.log("You win the game!");
-  } else {
-    console.log("You lost the game!");
-  }
-};
-
-game();
+});

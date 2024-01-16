@@ -9,9 +9,14 @@
   <body>
     <div class="content">
       <div class="computer player">
-        <h1 class="score">Computer Score: 0</h1>
+        <h1 class="computer score">Computer Score: 0</h1>
         <div class="computer picker">
-          <img src="assets/rock.png" alt="rock" id="computer-rock" />
+          <img
+            src="assets/rock.png"
+            alt="rock"
+            id="computer-rock"
+            class="test"
+          />
           <img src="assets/paper.png" alt="paper" id="computer-paper" />
           <img
             src="assets/scissors.png"
@@ -21,14 +26,24 @@
         </div>
       </div>
       <div class="user player">
-        <h1 class="score">Player Score: 0</h1>
-        <div class="user picker">
-          <img src="assets/rock.png" alt="rock" />
-          <img src="assets/paper.png" alt="paper" />
-          <img src="assets/scissors.png" alt="scissors" />
+        <h1 class="user score">Player Score: 0</h1>
+        <div class="user picker" id="user-picker">
+          <img src="assets/rock.png" alt="rock" class="user-choice" id="rock" />
+          <img
+            src="assets/paper.png"
+            alt="paper"
+            class="user-choice"
+            id="paper"
+          />
+          <img
+            src="assets/scissors.png"
+            alt="scissors"
+            class="user-choice"
+            id="scissors"
+          />
         </div>
       </div>
     </div>
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
   </body>
 </html>
