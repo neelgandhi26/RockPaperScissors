@@ -9,6 +9,9 @@ computerChoiceTransition = (choice) => {
     document
       .getElementById(`computer-${choice}`)
       .classList.remove("updown-animation");
+
+    document.getElementById(`computer-${choice}`).offsetWidth;
+
     document
       .getElementById(`computer-${choice}`)
       .classList.add("updown-animation");
